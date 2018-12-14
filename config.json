@@ -1,0 +1,6 @@
+{
+  "api_key": "<your_api_key_here>",
+  "playlist_id": "<your_playlist_id_here>",
+  "destination_folder": "<your_path_to_local_destination>",
+  "file_name": "youtube_favourites.txt"
+}
