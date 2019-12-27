@@ -1,3 +1,5 @@
+import types
+
 import requests
 import os
 import json
@@ -22,7 +24,10 @@ def get_youtube_favourites(next_page_token=None, titles=list(), number_of_videos
     if next_page_token is not None:
         params.update({'pageToken': next_page_token})
 
-    response = requests.get(url, params).json()
+    response = requests.get(url, params, headers=dict({'Referer': config['referer']})).json()
+
+    if response.get('items') is None:
+        raise Exception("Unable to connect with error: " + response.get("error").get("message"))
 
     for item in response.get('items'):
         current_title = item['snippet']['title']
