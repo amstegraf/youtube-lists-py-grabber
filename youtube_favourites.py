@@ -33,7 +33,7 @@ def get_youtube_favourites(next_page_token=None, titles=list(), number_of_videos
         current_title = item['snippet']['title']
         if current_title == 'Private video':
             current_title += ' - ' + item['snippet']['resourceId']['videoId']
-        titles.append(current_title)
+        titles.append(current_title + " - http://youtube.com/watch?v=" + item['snippet']['resourceId']['videoId'])
         number_of_videos += 1
 
     print(f'writing batch {number_of_videos} of {response["pageInfo"]["totalResults"]}...')
